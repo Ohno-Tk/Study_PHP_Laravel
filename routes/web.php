@@ -19,5 +19,5 @@ Route::get('/', function () {
 });
 
 
-Route::get('hello', [HelloController::class,'__invoke']);
+Route::get('hello', [HelloController::class,'index']);
 
