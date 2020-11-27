@@ -27,9 +27,9 @@ class HelloController extends Controller
         global $head, $style, $body,$end;
 
         $html = $head.tag('title', 'hello/index').$style.$body.
-        tag('h1','index').tag('p','this is index page.').
-        '<a = hreg="/hello/other">go to other page</a>'.
-        $end;
+        tag('h1','index').tag('p','this is index page.')
+        .'<a href="/hello/other">go to other page</a>'
+        .$end;
 
         return $html;
     }
@@ -37,10 +37,9 @@ class HelloController extends Controller
     public function other(){
         global $head, $style, $body,$end;
 
-        $html = $head.tag('title', 'hello/other').$style.$body.
-        tag('h1','other').tag('p','this is other page.').
-        '<a href="/hello/other">go to other page</a>'.
-        $end;
+        $html = $head.tag('title', 'hello/other').$style.$body
+        .tag('h1','other').tag('p','this is other page.')
+        .$end;
 
         return $html;
     }
