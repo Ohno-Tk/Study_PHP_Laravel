@@ -24,6 +24,7 @@ class HelloController extends Controller
         return view('hello.add');
     }
 
+    #作成
     public function create(Request $request){
         $param = [
             'name'=>$request->name,
@@ -36,6 +37,7 @@ class HelloController extends Controller
         return redirect('/hello');
     }
 
+    # 編集
     public function edit(Request $request){
         $param = ['id'=>$request->id];
 
@@ -44,6 +46,7 @@ class HelloController extends Controller
         return view('hello.edit', ['form'=>$item[0]]);
     }
 
+    # 更新
     public function update(Request $request){
         $param = [
             'id'=>$request->id,
@@ -53,6 +56,23 @@ class HelloController extends Controller
         ];
 
         DB::Update('update people set name = :name, mail = :mail, age = :age where id = :id', $param);
+
+        return redirect('/hello');
+    }
+
+    public function del(Request $request){
+        $param = ['id'=>$request->id];
+
+        $item = DB::select('select * from people where id=:id', $param);
+
+        return view('hello.del', ['form'=>$item[0]]);
+    }
+
+    public function remove(Request $request){
+
+        $param = ['id'=>$request->id];
+
+        DB::delete('delete from people where id = :id', $param);
 
         return redirect('/hello');
     }
