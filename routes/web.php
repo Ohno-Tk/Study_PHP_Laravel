@@ -20,13 +20,17 @@ Route::get('/', function () {
 });
 
 
-Route::get('hello', [HelloController::class,'index']);
+// hello
+Route::get('hello', 'App\Http\Controllers\HelloController@index');
 
-Route::get('hello/add', [HelloController::class,'add']);
-Route::post('hello/add', [HelloController::class,'create']);
+// hello/add
+Route::get('hello/add', 'App\Http\Controllers\HelloController@add');
+Route::post('hello/add', 'App\Http\Controllers\HelloController@create');
 
-Route::get('hello/edit', [HelloController::class,'edit']);
-Route::post('hello/edit', [HelloController::class,'update']);
+// hello/edit
+Route::get('hello/edit', 'App\Http\Controllers\HelloController@edit');
+Route::post('hello/edit', 'App\Http\Controllers\HelloController@update');
 
-Route::get('hello/del', [HelloController::class,'del']);
-Route::post('hello/del', [HelloController::class,'remove']);
+// hello/del
+Route::get('hello/del', 'App\Http\Controllers\HelloController@del');
+Route::post('hello/del', 'App\Http\Controllers\HelloController@remove');
