@@ -60,6 +60,7 @@ class HelloController extends Controller
         return redirect('/hello');
     }
 
+    # 削除
     public function del(Request $request){
         $param = ['id'=>$request->id];
 
@@ -75,5 +76,13 @@ class HelloController extends Controller
         DB::delete('delete from people where id = :id', $param);
 
         return redirect('/hello');
+    }
+
+    # 指定したIDを表示
+    public function show(Request $request){
+        $id = $request->id;
+        $item = DB::table('people')->where('id',$id)->first();
+
+        return view('hello.show', ['item'=>$item]);
     }
 }
